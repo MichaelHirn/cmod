@@ -30,7 +30,7 @@ const MULTI_IMPORT_QUERY: &str = "(
     source: (string (string_fragment) @source)
 )";
 
-const CREATE_COMPLETION_QUERY: &str = "(
+const _CREATE_COMPLETION_QUERY: &str = "(
 	call_expression
     function: (
     	member_expression

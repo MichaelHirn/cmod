@@ -14,7 +14,7 @@ The example codebase(s) to vendor-integrate are in the [`example`](./examples) d
 The main code is in the [`src`](./src) directory, exposing a CLI to run the parser on a given directoy. To use it on the example codebase, run:
 
 ```sh
-cargo build && target/debug/llm-demo -p ./examples/openai-starter/src
+cargo build && target/debug/cmod -p ./examples/openai-starter/src
 ```
 
 For a more systematic probing of the functionality, you can run the tests:

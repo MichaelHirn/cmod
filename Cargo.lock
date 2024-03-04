@@ -109,6 +109,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "702fc72eb24e5a1e48ce58027a675bc24edd52096d5397d4aea7c6dd9eca0bd1"
 
 [[package]]
+name = "cmod"
+version = "0.0.1"
+dependencies = [
+ "cc",
+ "clap",
+ "tree-sitter",
+ "tree-sitter-typescript",
+]
+
+[[package]]
 name = "colorchoice"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -125,16 +135,6 @@ name = "libc"
 version = "0.2.152"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13e3bf6590cbc649f4d1a3eefc9d5d6eb746f5200ffb04e5e142700b8faa56e7"
-
-[[package]]
-name = "llm-demo"
-version = "0.1.0"
-dependencies = [
- "cc",
- "clap",
- "tree-sitter",
- "tree-sitter-typescript",
-]
 
 [[package]]
 name = "memchr"
