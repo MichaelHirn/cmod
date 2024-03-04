@@ -1,0 +1,14 @@
+[package]
+name = "llm-demo"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+cc="*"
+
+[dependencies]
+clap = { version = "4.4.18", features = ["derive"] }
+tree-sitter = "0.20.10"
+tree-sitter-typescript = "0.20.3"

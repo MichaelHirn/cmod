@@ -1,0 +1,22 @@
+async function main() {
+  const openAI = await import("openai");
+
+  const configuration = new openAI.Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+
+  const openai = new openAI.OpenAIApi(configuration);
+
+  try {
+    const engineId = "text-davinci-003"; // Engine ID
+    const prompt = "Hello world"; // Your prompt
+
+    const response = await openai.createCompletion(engineId, { prompt: prompt });
+
+    console.log((response.data.choices ?? [])[0].text?.trim());
+  } catch (error) {
+    console.error("Error calling OpenAI API:", error);
+  }
+}
+
+main();
