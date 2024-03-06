@@ -9,9 +9,7 @@ The goal is that for >80% of cases we can automatically integrate Mistral correc
 
 ## Usage
 
-The example codebase(s) to vendor-integrate are in the [`example`](./examples) directory.
-
-The main code is in the [`src`](./src) directory, exposing a CLI to run the parser on a given directoy. To use it on the example codebase, run:
+The repo exposes a CLI to run the parser on a given directoy. To use it on the example codebase, run:
 
 ```sh
 cargo build && target/debug/cmod -p ./examples/openai-starter/src
@@ -23,9 +21,11 @@ For a more systematic probing of the functionality, you can run the tests:
 cargo test
 ```
 
+> Note: The example codebase(s) to vendor-integrate are in the [`example`](./examples) directory.
+
 ## Development
 
-The development roadmap to achieve the initial objective is as follows:
+The to-do list to achieve the above stated objective (migrate GPT3.5 to Mistral) is as follows:
 
 1. [x] find all target files, i.e. importing 'openai' (see: get_target_files)
 2. [ ] search for all `createCompletion` calls (probably doable)
@@ -37,11 +37,11 @@ The development roadmap to achieve the initial objective is as follows:
 
 #### Notes on Step 1
 
-Finding the target files is rather trivial excluding extrem edge cases like dynamic imports and essentially compiler correct. Core implementation in the parser.rs file via the `get_target_files` function.
+Finding the target files is rather trivial (excluding extrem edge cases like dynamic imports) and are essentially compiler correct. Core implementation in the parser.rs file via the `get_target_files` function.
 
 #### Notes on Step 2
 
-Once you have target files, targeting the correct function calls for change like `createCompletion` has one additional complexity: you need to resolve by entity from the imported `openai` module. This should be achievable via tree-sitters [tagging](https://tree-sitter.github.io/tree-sitter/code-navigation-systems) system. This is not implemented yet though. Alternative approaches would be LSP/LSIF or sourcegraph's improvement over LSIF aka. [SCIP](https://sourcegraph.com/blog/announcing-scip), which, unlike tree-sitter, were designed for codebase-level (instead of file-level) traversal. However, tree-sitter is significantly faster, efficient, and easier extensible than SCIP/LSIF.
+Once you have the target files, targeting the correct function calls for change like `createCompletion` has one additional complexity: you need to resolve by entity from the imported `openai` module. This should be achievable via tree-sitters [tagging](https://tree-sitter.github.io/tree-sitter/code-navigation-systems) system. This is not implemented yet though. Alternative approaches would be LSP/LSIF or sourcegraph's improvement over LSIF aka. [SCIP](https://sourcegraph.com/blog/announcing-scip), which, unlike tree-sitter, were designed for codebase-level (instead of file-level) traversal. However, tree-sitter is significantly faster, efficient, and easier extensible than SCIP/LSIF.
 
 #### Notes on Step 3
 
